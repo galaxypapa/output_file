@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+    
+  csv_api:
+    build:
+      context: './apache/'
+    networks:
+      - backend
+    ports:
+      - "8000:80"  
+    volumes:
+      - '.:/var/www/html/'
+    container_name: csv_api
+    
+  csv_mailcatcher:
+    image: schickling/mailcatcher
+    container_name: csv_mailcatcher
+    ports:
+    - "8001:1080"
+    - "1025:1025"
+    networks:
+    - backend
+    
+networks:
+  backend:
+    driver: bridge
+
