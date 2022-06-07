@@ -1,7 +1,7 @@
 version: "3.7"
 services:
     
-  csv_api:
+  output_file:
     build:
       context: './apache/'
     networks:
@@ -10,11 +10,11 @@ services:
       - "8000:80"  
     volumes:
       - '.:/var/www/html/'
-    container_name: csv_api
+    container_name: output_file
     
-  csv_mailcatcher:
+  output_file_mailcatcher:
     image: schickling/mailcatcher
-    container_name: csv_mailcatcher
+    container_name: output_file_mailcatcher
     ports:
     - "8001:1080"
     - "1025:1025"
